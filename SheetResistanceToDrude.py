@@ -4,6 +4,32 @@ import Functions.Organisation as org
 import Functions.StandardPlots as plot
 
 
+def SheetResistanceConductivity(sheet_resistance,
+                                film_thickness):
+    '''
+    Calculate conductivity from a sheet resistance measurement.
+    '''
+    resistivity = sheet_resistance * film_thickness
+    conductivity = 1 / resistivity
+    return conductivity
+
+
+def ConductivityToConcentration(sigma,
+                                mu,
+                                e_charge):
+    '''
+    Calculate carrier concentration from electron mobility and conductivity.
+    Args:
+        sigma: <float> electrical conductivity
+        mu: <float> electron mobility
+        e_charge: <float> electron charge
+    Returns:
+        N: <float> carrier concentration
+    '''
+    N = sigma / (mu * e_charge)
+    return N
+
+
 def PlasmaFrequency(e_density,
                     e_charge,
                     eps_0,
@@ -39,7 +65,7 @@ def DrudeEq(eps_inf,
 
 
 if __name__ == '__main__':
-
+    
     ''' Organisation '''
     root = os.getcwd()
     constants = org.GetConfig(
@@ -51,9 +77,24 @@ if __name__ == '__main__':
         root,
         'References')
 
+    ''' Sheet Resistances '''
+    samplenames = ['AF1', 'AF2', 'AF3']
+    sheetresistances = [677.65, 357.38, 168.63]  # Ohms/sq
+    thicknesses = [162.18, 147.13, 181.70]  # nm
+
     ''' Params '''
-    Ns = [1E18, 1E19, 1E20, 1E21, 5E21, 1E22]  # cm^-3, from paper
-    Nm = [n * 1E6 for n in Ns]  # m^-3, from paper
+    sigmas = [
+        SheetResistanceConductivity(
+            sheet_resistance=rs,
+            film_thickness=(t * 1E-9))
+        for rs, t in zip(sheetresistances, thicknesses)]
+    Ns = [
+        ConductivityToConcentration(
+            sigma=sig,
+            mu=constants['mu'],
+            e_charge=constants['e_charge'])
+        for sig in sigmas]
+    Nm = [n * 1E6 for n in Ns]  # m^-3
     plasmafreqs = [
         PlasmaFrequency(
             e_density=N,
@@ -81,9 +122,9 @@ if __name__ == '__main__':
     ''' Specific Plot '''
     plot.AtwaterPlot(
         eps_drude=epsdrude,
-        N_m3=Nm,
+        N_m3=samplenames,
         frequency_THz=frequencyTHz,
         frequency_ticks=ticks,
         out_path=os.path.join(
             outpath,
-            'AtwaterPaper.png'))
+            'SampleAF.png'))
