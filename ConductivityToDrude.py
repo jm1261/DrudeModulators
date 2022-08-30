@@ -4,6 +4,22 @@ import Functions.Organisation as org
 import Functions.StandardPlots as plot
 
 
+def ConductivityToConcentration(sigma,
+                                mu,
+                                e_charge):
+    '''
+    Calculate carrier concentration from electron mobility and conductivity.
+    Args:
+        sigma: <float> electrical conductivity
+        mu: <float> electron mobility
+        e_charge: <float> electron charge
+    Returns:
+        N: <float> carrier concentration
+    '''
+    N = sigma / (mu * e_charge)
+    return N
+
+
 def PlasmaFrequency(e_density,
                     e_charge,
                     eps_0,
@@ -51,9 +67,17 @@ if __name__ == '__main__':
         root,
         'References')
 
+    ''' Conductivity '''
+    sigmas = [6337.37658, 713.279, 61.19266461]
+
     ''' Params '''
-    Ns = [1E18, 1E19, 1E20, 1E21, 5E21, 1E22]  # cm^-3, from paper
-    Nm = [n * 1E6 for n in Ns]  # m^-3, from paper
+    Ns = [
+        ConductivityToConcentration(
+            sigma=sig,
+            mu=constants['mu'],
+            e_charge=constants['e_charge'])
+        for sig in sigmas]
+    Nm = [n * 1E6 for n in Ns]  # m^-3
     plasmafreqs = [
         PlasmaFrequency(
             e_density=N,
@@ -81,9 +105,9 @@ if __name__ == '__main__':
     ''' Specific Plot '''
     plot.AtwaterPlot(
         eps_drude=epsdrude,
-        N_m3=Nm,
+        N_m3=sigmas,
         frequency_THz=frequencyTHz,
         frequency_ticks=ticks,
         out_path=os.path.join(
             outpath,
-            'AtwaterPaper.png'))
+            'TestSigmas.png'))
