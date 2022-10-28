@@ -1,0 +1,10 @@
+{
+  "Sheet Resistance": [986, 917.34, 1019, 889.70, 994.38],
+  "Film Thickness": [150E-9, 2E-9],
+  "Epsilon Infinity": [4.9, 0.05],
+  "Electron Mobility" : [12E-4, 0.05E-4],
+  "Resonant Wavelength": [596, 625, 642, 693, 730],
+  "Material Index": [2.210, 2.210, 2.210, 2.205, 2.2],
+  "Index Lower Bound": [2.07, 2.09, 2.09, 2.20, 2.10],
+  "Index Upper Bound": [2.27, 2.29, 2.30, 2.40, 2.30]
+}
