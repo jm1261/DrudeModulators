@@ -1,49 +1,5 @@
-import os
 import json
 import numpy as np
-from src.filepaths import get_filename
-
-
-def read_sample_data(file_path):
-    '''
-    Read sample data from csv or json
-    Args:
-        file_path: <string> path to file
-    Returns:
-        sample_data: <dict> dictionary containing all required sample data
-    '''
-    filename = {"File Name": get_filename(file_path=file_path)}
-    if os.path.splitext(file_path)[1] == '.json':
-        sample_dict = load_json(file_path=file_path)
-        sample_data = dict(filename, **sample_dict)
-    elif os.path.splitext(file_path)[1] == '.csv':
-        res, thick, eps_inf, mu, wav, n, n_upper, n_lower = np.genfromtxt(
-            fname=file_path,
-            delimiter=',',
-            skip_header=2,
-            unpack=True)
-        sample_dict = {
-            "Sheet Resistance": [
-                sr for sr in res if isinstance(sr, (float, int))],
-            "Film Thickness": [
-                t for t in thick if isinstance(t, (float, int))],
-            "Epsilon Infinity": [
-                e for e in eps_inf if isinstance(e, (float, int))],
-            "Electron Mobility": [
-                u for u in mu if isinstance(u, (float, int))],
-            "Resonant Wavelength": [
-                w for w in wav if isinstance(w, (float, int))],
-            "Material Index": [
-                N for N in n if isinstance(N, (float, int))],
-            "Index Upper Bound": [
-                n for n in n_upper if isinstance(n, (float, int))],
-            "Index Lower Bound": [
-                n for n in n_lower if isinstance(n, (float, int))]}
-        sample_data = dict(filename, **sample_dict)
-    else:
-        sample_dict = {}
-        sample_data = dict(filename, **sample_dict)
-    return sample_data
 
 
 def load_json(file_path):
@@ -84,3 +40,96 @@ def save_json_dicts(out_path,
             indent=2,
             default=convert)
         outfile.write('\n')
+
+
+def load_sheet_resistance(file_path):
+    '''
+    Load sheet resistances from single column csv file. Works with txt file.
+    Args:
+        file_path: <string> path to file
+    Returns:
+        sheet_resistances: <array> sheet resistances array
+    '''
+    sheet_resistances, _ = np.genfromtxt(
+        fname=file_path,
+        delimiter=',',
+        skip_header=1,
+        unpack=True)
+    return sheet_resistances
+
+
+def get_S4_measurements(file_path):
+    '''
+    Pull required measured parameters from S4 output file and store in batch/
+    sample dictionary.
+    Args:
+        file_path: <string> path to S4 measurements
+    Returns:
+        batch_dictionary: <dict> sample/batch dictionary containing required
+                            parameters to fit the Drude model
+    '''
+    S4_measurements = load_json(file_path=file_path)
+    gratings = S4_measurements['Gratings']
+    batch_dictionary = {
+        'Refractive Index': [],
+        'Refractive Index Error': [],
+        'Extinction Coefficient': [],
+        'Extinction Coefficient Error': [],
+        'Peak Wavelength': [],
+        'Peak Wavelength Error': [],
+        'Film Thickness': [],
+        'Film Thickness Error': [],
+        'Figure Of Merit': [],
+        'Bad Gratings': []}
+    for grating in gratings:
+        grating_dict = S4_measurements[f'{grating}']
+        if f'{grating} Missing Parameters' in grating_dict.keys():
+            pass
+        else:
+            fano_names = grating_dict[f'{grating} S4 Fano Fit Parameters']
+            fano_values = grating_dict[f'{grating} S4 Fano Fit']
+            fano_errors = grating_dict[f'{grating} S4 Fano Errors']
+            variables = (grating_dict[f'{grating} Variables'])['S4 Strings']
+            variable_values = grating_dict[f'{grating} Optimizer Results']
+            variable_errors = grating_dict[f'{grating} Optimizer Errors']
+            constants = (grating_dict[f'{grating} Constants'])['S4 Strings']
+            constant_values = (
+                grating_dict[f'{grating} Constants'])['S4 Values']
+            if grating_dict[f'{grating} Figure Of Merit'] > 50:
+                batch_dictionary['Bad Gratings'].append(f'{grating}')
+            else:
+                batch_dictionary['Figure Of Merit'].append(
+                    grating_dict[f'{grating} Figure Of Merit'])
+                for index, name in enumerate(fano_names):
+                    if name == 'Peak':
+                        batch_dictionary['Peak Wavelength'].append(
+                            fano_values[index])
+                        batch_dictionary['Peak Wavelength Error'].append(
+                            fano_errors[index])
+                for index, name in enumerate(variables):
+                    if name == 'material_n':
+                        batch_dictionary['Refractive Index'].append(
+                            variable_values[index])
+                        batch_dictionary['Refractive Index Error'].append(
+                            variable_errors[index])
+                    if name == 'material_k':
+                        batch_dictionary['Extinction Coefficient'].append(
+                            variable_values[index])
+                        batch_dictionary['Extinction Coefficient Error'].append(
+                            variable_errors[index])
+                    ''' This will need changing soon '''
+                    if name == 'grating_thickness':
+                        batch_dictionary['Film Thickness Error'].append(
+                            variable_errors[index])
+                for index, name in enumerate(constants):
+                    if name == 'film_thickness':
+                        batch_dictionary['Film Thickness'].append(
+                            constant_values[index])
+    if len(batch_dictionary['Peak Wavelength']) == 0:
+        batch_dictionary = {'Skip': True}
+    return batch_dictionary
+
+
+def get_mobilities():
+    '''
+    '''

@@ -1,0 +1,40 @@
+{
+    "Names": [
+        "Effective Mass",
+        "Epsilon Infinity",
+        "Relaxation Time"
+    ],
+    "Guesses": [
+        0.35,
+        4.5,
+        2E14
+    ],
+    "Bounds": [
+        [0.25, 0.45],
+        [2.0, 6.0],
+        [1E12, 1E16]
+    ],
+    "Frequency THz Range": [
+        900,
+        1,
+        -1
+    ],
+    "Frequency THz Ticks": [
+        1,
+        100,
+        200,
+        300,
+        400,
+        500,
+        600,
+        700,
+        800,
+        900
+    ],
+    "Mobilities": {
+        "AA5": 28.57,
+        "Y1": 1.998,
+        "AE1": 1.114,
+        "AF2": 1.699
+    }
+}

@@ -1,0 +1,1180 @@
+{
+  "File Paths": [
+    "/media/mass_storage/josh/Documents/Grating Optimizer/S4/Y1_Film.json",
+    "/media/mass_storage/josh/Documents/Grating Optimizer/S4/Y1_Grating.json",
+    "/media/mass_storage/josh/Documents/Grating Optimizer/S4/Y1_Peak.json",
+    "/media/mass_storage/josh/Documents/Grating Optimizer/S4/Y1_Period.json"
+  ],
+  "Gratings": [
+    "P350_TE",
+    "P350_TM",
+    "P400_TE",
+    "P400_TM",
+    "P475_TE",
+    "P475_TM",
+    "P550_TE",
+    "P550_TM",
+    "P625_TE",
+    "P625_TM"
+  ],
+  "P350_TE": {
+    "P350_TE Optimizer Results": [
+      1.9768094915926138,
+      0.0001,
+      0.7448787816842443,
+      352.68743882887793,
+      144.5175470423034
+    ],
+    "P350_TE Optimizer Errors": [
+      0.0008873720815412264,
+      8.516015313655637e-06,
+      0.012978676779287572,
+      0.05227532185685354,
+      0.050021055068351
+    ],
+    "P350_TE Iterations": 48,
+    "P350_TE FoM Tolerance": 1e-07,
+    "P350_TE Fano Fit Parameters": [
+      "Peak",
+      "Gamma",
+      "q",
+      "Amplitude",
+      "Damping"
+    ],
+    "P350_TE Fano Fit": [
+      595.4318395862274,
+      8.11652109663861,
+      0.28963690825872745,
+      0.019241335356242097,
+      13.7288600975409
+    ],
+    "P350_TE Fano Errors": [
+      0.12060852836024206,
+      0.25658035757212927,
+      0.14504354090851618,
+      0.0010508240183444415,
+      0.7400154962755099
+    ],
+    "P350_TE S4 Fano Fit Parameters": [
+      "Peak",
+      "Gamma",
+      "q",
+      "Amplitude",
+      "Damping"
+    ],
+    "P350_TE S4 Fano Fit": [
+      595.3288443418465,
+      6.221282138680286,
+      0.04603616868656174,
+      0.19052658700224306,
+      5.0579788628643385
+    ],
+    "P350_TE S4 Fano Errors": [
+      0.09365419433913943,
+      0.19392318455594415,
+      0.04442316148572907,
+      0.0022290239056954393,
+      0.09705989785092396
+    ],
+    "P350_TE Figure Of Merit": 85.16015322061779,
+    "P350_TE Fano Error": 78.8754000717457,
+    "P350_TE Overlap Error": 6.284753148872089,
+    "P350_TE Differences": [
+      0.010608020365070957,
+      3.5919307077629545,
+      0.059341320320106104,
+      0.02933863743143388,
+      75.18418138586614
+    ],
+    "P350_TE Variables": {
+      "S4 Strings": [
+        "material_n",
+        "material_k",
+        "fill_factor",
+        "period",
+        "grating_thickness"
+      ],
+      "S4 Guesses": [
+        1.9768094915926138,
+        0.0001,
+        0.7448787816842443,
+        352.68743882887793,
+        144.5175470523034
+      ]
+    },
+    "P350_TE Constants": {
+      "Reflection": "True",
+      "S4 Strings": [
+        "harmonics",
+        "cover_n",
+        "cover_k",
+        "substrate_n",
+        "substrate_k",
+        "film_thickness",
+        "peak_wavelength",
+        "TE",
+        "TM"
+      ],
+      "S4 Values": [
+        21,
+        1,
+        0,
+        1.4542,
+        0,
+        258.5172118050083,
+        595.4086689539834,
+        1,
+        0
+      ]
+    },
+    "P350_TE Wavelength Range": [
+      529,
+      690,
+      1
+    ]
+  },
+  "P350_TM": {
+    "P350_TM Optimizer Results": [
+      4.499999979051398,
+      0.02048874689145786,
+      0.5676851420244474,
+      352.4169235659742,
+      28.290677799589023
+    ],
+    "P350_TM Optimizer Errors": [
+      1.569598691121236e-05,
+      1.569598691121236e-05,
+      1.569598691121236e-05,
+      1.569598691121236e-05,
+      1.569598691121236e-05
+    ],
+    "P350_TM Iterations": 46,
+    "P350_TM FoM Tolerance": 1e-07,
+    "P350_TM Fano Fit Parameters": [
+      "Peak",
+      "Gamma",
+      "q",
+      "Amplitude",
+      "Damping"
+    ],
+    "P350_TM Fano Fit": [
+      592.2394878145805,
+      6.168699930666135,
+      2.2399512506325645,
+      0.05301101676072077,
+      -0.0303252899756222
+    ],
+    "P350_TM Fano Errors": [
+      0.08527218892108465,
+      0.17644610982218595,
+      0.06418046960489716,
+      0.0010017820635454578,
+      0.2846098212393588
+    ],
+    "P350_TM S4 Fano Fit Parameters": [
+      "Peak",
+      "Gamma",
+      "q",
+      "Amplitude",
+      "Damping"
+    ],
+    "P350_TM S4 Fano Fit": [
+      585.5639116416509,
+      15.373451454913441,
+      0.31307975234757646,
+      0.4716985823867156,
+      0.3214888110572984
+    ],
+    "P350_TM S4 Fano Errors": [
+      2.2368369361295506,
+      4.15453164592744,
+      0.09332944665408234,
+      0.01823120426443721,
+      0.16524359711009806
+    ],
+    "P350_TM Figure Of Merit": 156.9598984077663,
+    "P350_TM Fano Error": 133.3026740739169,
+    "P350_TM Overlap Error": 23.65722433384939,
+    "P350_TM Differences": [
+      44.56331724058534,
+      84.72745062313312,
+      3.712833770903035,
+      0.1752992776098217,
+      0.12377316168560203
+    ],
+    "P350_TM Variables": {
+      "S4 Strings": [
+        "material_n",
+        "material_k",
+        "fill_factor",
+        "period",
+        "grating_thickness"
+      ],
+      "S4 Guesses": [
+        4.499999979051275,
+        0.0204887468914573,
+        0.5676851420244373,
+        352.41692356597287,
+        28.29067780958886
+      ]
+    },
+    "P350_TM Constants": {
+      "Reflection": "True",
+      "S4 Strings": [
+        "harmonics",
+        "cover_n",
+        "cover_k",
+        "substrate_n",
+        "substrate_k",
+        "film_thickness",
+        "peak_wavelength",
+        "TE",
+        "TM"
+      ],
+      "S4 Values": [
+        21,
+        1,
+        0,
+        1.4542,
+        0,
+        258.5172118050083,
+        592.2401196141207,
+        0,
+        1
+      ]
+    },
+    "P350_TM Wavelength Range": [
+      527,
+      696,
+      1
+    ]
+  },
+  "P400_TE": {
+    "P400_TE Optimizer Results": [
+      2.1,
+      0.02,
+      0.65,
+      404.57516339869284,
+      27.312794108108108
+    ],
+    "P400_TE Optimizer Errors": [
+      0.024999999999999998,
+      0.024999999999999998,
+      0.024999999999999998,
+      0.024999999999999998,
+      0.024999999999999998
+    ],
+    "P400_TE Iterations": 0,
+    "P400_TE FoM Tolerance": 1e-07,
+    "P400_TE Fano Fit Parameters": [
+      "Peak",
+      "Gamma",
+      "q",
+      "Amplitude",
+      "Damping"
+    ],
+    "P400_TE Fano Fit": [
+      659.0569281441308,
+      12.462636796409113,
+      -2.308191387088682,
+      0.037613129340266525,
+      3.4304524345083065
+    ],
+    "P400_TE Fano Errors": [
+      0.14915765450345966,
+      0.31094502214892056,
+      0.09282486016449013,
+      0.0012860327394966634,
+      0.390358468381568
+    ],
+    "P400_TE S4 Fano Fit Parameters": [
+      "Peak",
+      "Gamma",
+      "q",
+      "Amplitude",
+      "Damping"
+    ],
+    "P400_TE S4 Fano Fit": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "P400_TE S4 Fano Errors": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "P400_TE Figure Of Merit": 250000,
+    "P400_TE Fano Error": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "P400_TE Overlap Error": 250000,
+    "P400_TE Differences": 0,
+    "P400_TE Variables": {
+      "S4 Strings": [
+        "material_n",
+        "material_k",
+        "fill_factor",
+        "period",
+        "grating_thickness"
+      ],
+      "S4 Guesses": [
+        2.1,
+        0.02,
+        0.65,
+        404.57516339869284,
+        27.31279411810811
+      ]
+    },
+    "P400_TE Constants": {
+      "Reflection": "True",
+      "S4 Strings": [
+        "harmonics",
+        "cover_n",
+        "cover_k",
+        "substrate_n",
+        "substrate_k",
+        "film_thickness",
+        "peak_wavelength",
+        "TE",
+        "TM"
+      ],
+      "S4 Values": [
+        21,
+        1,
+        0,
+        1.4542,
+        0,
+        258.5172118050083,
+        659.1066659342415,
+        1,
+        0
+      ]
+    },
+    "P400_TE Wavelength Range": [
+      561,
+      755,
+      1
+    ]
+  },
+  "P400_TM": {
+    "P400_TM Optimizer Results": [
+      4.3508442233584725,
+      0.02132621782488111,
+      0.6499997448341657,
+      406.0575570717107,
+      106.92687508598306
+    ],
+    "P400_TM Optimizer Errors": [
+      7.512539205481846e-06,
+      7.512539205481846e-06,
+      7.512539205481846e-06,
+      7.512539205481846e-06,
+      7.512539205481846e-06
+    ],
+    "P400_TM Iterations": 20,
+    "P400_TM FoM Tolerance": 1e-07,
+    "P400_TM Fano Fit Parameters": [
+      "Peak",
+      "Gamma",
+      "q",
+      "Amplitude",
+      "Damping"
+    ],
+    "P400_TM Fano Fit": [
+      654.8426396318619,
+      6.359288434261887,
+      2.8421724906888683,
+      0.03248396008589182,
+      4.028202575462587
+    ],
+    "P400_TM Fano Errors": [
+      0.11320684484760168,
+      0.2333653325940273,
+      0.1965105438050688,
+      0.001853635547221214,
+      0.9542718356812367
+    ],
+    "P400_TM S4 Fano Fit Parameters": [
+      "Peak",
+      "Gamma",
+      "q",
+      "Amplitude",
+      "Damping"
+    ],
+    "P400_TM S4 Fano Fit": [
+      652.2929549734874,
+      7.829531325367561,
+      0.0028650895757484905,
+      0.6935041095646962,
+      0.603908866685362
+    ],
+    "P400_TM S4 Fano Errors": [
+      1.6654971253249893,
+      3.4977347480218133,
+      0.06159777225493171,
+      0.01343969062988874,
+      0.11493052633330272
+    ],
+    "P400_TM Figure Of Merit": 75.1254126633843,
+    "P400_TM Fano Error": 28.886907576000638,
+    "P400_TM Overlap Error": 46.23850508738366,
+    "P400_TM Differences": [
+      6.500891857149869,
+      2.161614158846769,
+      8.06166651801574,
+      0.4369476380169809,
+      11.725787403971282
+    ],
+    "P400_TM Variables": {
+      "S4 Strings": [
+        "material_n",
+        "material_k",
+        "fill_factor",
+        "period",
+        "grating_thickness"
+      ],
+      "S4 Guesses": [
+        4.3508442233584725,
+        0.02132621782488111,
+        0.6499997448341657,
+        406.0575570717107,
+        106.92687509598305
+      ]
+    },
+    "P400_TM Constants": {
+      "Reflection": "True",
+      "S4 Strings": [
+        "harmonics",
+        "cover_n",
+        "cover_k",
+        "substrate_n",
+        "substrate_k",
+        "film_thickness",
+        "peak_wavelength",
+        "TE",
+        "TM"
+      ],
+      "S4 Values": [
+        21,
+        1,
+        0,
+        1.4542,
+        0,
+        258.5172118050083,
+        654.8417735526671,
+        0,
+        1
+      ]
+    },
+    "P400_TM Wavelength Range": [
+      578,
+      728,
+      1
+    ]
+  },
+  "P475_TE": {
+    "P475_TE Optimizer Results": [
+      2.1,
+      0.02,
+      0.65,
+      485.8119632086328,
+      16.685031715135135
+    ],
+    "P475_TE Optimizer Errors": [
+      0.024999999999999998,
+      0.024999999999999998,
+      0.024999999999999998,
+      0.024999999999999998,
+      0.024999999999999998
+    ],
+    "P475_TE Iterations": 0,
+    "P475_TE FoM Tolerance": 1e-07,
+    "P475_TE Fano Fit Parameters": [
+      "Peak",
+      "Gamma",
+      "q",
+      "Amplitude",
+      "Damping"
+    ],
+    "P475_TE Fano Fit": [
+      750.5623841919519,
+      15.175360437727608,
+      -3.417487406142746,
+      0.015990492866888764,
+      3.8924573821020445
+    ],
+    "P475_TE Fano Errors": [
+      0.09928855245564316,
+      0.21703794730417975,
+      0.16192768688234283,
+      0.0008033455533552581,
+      0.5868256367691078
+    ],
+    "P475_TE S4 Fano Fit Parameters": [
+      "Peak",
+      "Gamma",
+      "q",
+      "Amplitude",
+      "Damping"
+    ],
+    "P475_TE S4 Fano Fit": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "P475_TE S4 Fano Errors": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "P475_TE Figure Of Merit": 250000,
+    "P475_TE Fano Error": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "P475_TE Overlap Error": 250000,
+    "P475_TE Differences": 0,
+    "P475_TE Variables": {
+      "S4 Strings": [
+        "material_n",
+        "material_k",
+        "fill_factor",
+        "period",
+        "grating_thickness"
+      ],
+      "S4 Guesses": [
+        2.1,
+        0.02,
+        0.65,
+        485.8119632086328,
+        16.685031725135136
+      ]
+    },
+    "P475_TE Constants": {
+      "Reflection": "True",
+      "S4 Strings": [
+        "harmonics",
+        "cover_n",
+        "cover_k",
+        "substrate_n",
+        "substrate_k",
+        "film_thickness",
+        "peak_wavelength",
+        "TE",
+        "TM"
+      ],
+      "S4 Values": [
+        21,
+        1,
+        0,
+        1.4542,
+        0,
+        258.5172118050083,
+        750.5799269005477,
+        1,
+        0
+      ]
+    },
+    "P475_TE Wavelength Range": [
+      674,
+      827,
+      1
+    ]
+  },
+  "P475_TM": {
+    "P475_TM Optimizer Results": [
+      1.845940110455841,
+      0.004155307275692422,
+      0.8165604483216345,
+      488.4439738487441,
+      242.124159494265
+    ],
+    "P475_TM Optimizer Errors": [
+      1.1996613076209492e-07,
+      1.892432625258656e-09,
+      4.5705646214608224e-07,
+      1.6573158295414268e-06,
+      5.698332080989148e-07
+    ],
+    "P475_TM Iterations": 66,
+    "P475_TM FoM Tolerance": 1e-07,
+    "P475_TM Fano Fit Parameters": [
+      "Peak",
+      "Gamma",
+      "q",
+      "Amplitude",
+      "Damping"
+    ],
+    "P475_TM Fano Fit": [
+      745.0699616108684,
+      6.980794794106108,
+      3.5170070441888597,
+      0.019963335694858,
+      4.271665250278526
+    ],
+    "P475_TM Fano Errors": [
+      0.05882537977326336,
+      0.12470000032245014,
+      0.1601580265095437,
+      0.0008036848576919721,
+      0.7945693363976504
+    ],
+    "P475_TM S4 Fano Fit Parameters": [
+      "Peak",
+      "Gamma",
+      "q",
+      "Amplitude",
+      "Damping"
+    ],
+    "P475_TM S4 Fano Fit": [
+      745.037510850446,
+      6.847467868289834,
+      2.0994937811330394,
+      0.06347918408136481,
+      4.3938474586700735
+    ],
+    "P475_TM S4 Fano Errors": [
+      0.10673280363846938,
+      0.2201298285254337,
+      0.10626533459034236,
+      0.0018517525672981318,
+      0.4654825482370813
+    ],
+    "P475_TM Figure Of Merit": 2.683364212443933,
+    "P475_TM Fano Error": 2.044995093047004,
+    "P475_TM Overlap Error": 0.6383691193969292,
+    "P475_TM Differences": [
+      0.0010530518519933586,
+      0.017776069147618388,
+      2.009343850939159,
+      0.0018936290607974471,
+      0.014928492047435453
+    ],
+    "P475_TM Variables": {
+      "S4 Strings": [
+        "material_n",
+        "material_k",
+        "fill_factor",
+        "period",
+        "grating_thickness"
+      ],
+      "S4 Guesses": [
+        1.845940110455841,
+        0.004155307275692422,
+        0.8165604483216345,
+        488.4439738487441,
+        242.124159504265
+      ]
+    },
+    "P475_TM Constants": {
+      "Reflection": "True",
+      "S4 Strings": [
+        "harmonics",
+        "cover_n",
+        "cover_k",
+        "substrate_n",
+        "substrate_k",
+        "film_thickness",
+        "peak_wavelength",
+        "TE",
+        "TM"
+      ],
+      "S4 Values": [
+        21,
+        1,
+        0,
+        1.4542,
+        0,
+        258.5172118050083,
+        745.1180797062254,
+        0,
+        1
+      ]
+    },
+    "P475_TM Wavelength Range": [
+      677,
+      826,
+      1
+    ]
+  },
+  "P550_TE": {
+    "P550_TE Optimizer Results": [
+      2.1,
+      0.02,
+      0.65,
+      560.896164021164,
+      19.400837504444443
+    ],
+    "P550_TE Optimizer Errors": [
+      0.024999999999999998,
+      0.024999999999999998,
+      0.024999999999999998,
+      0.024999999999999998,
+      0.024999999999999998
+    ],
+    "P550_TE Iterations": 0,
+    "P550_TE FoM Tolerance": 1e-07,
+    "P550_TE Fano Fit Parameters": [
+      "Peak",
+      "Gamma",
+      "q",
+      "Amplitude",
+      "Damping"
+    ],
+    "P550_TE Fano Fit": [
+      844.2530618204343,
+      16.36784799033137,
+      1.4333316180726206,
+      0.0244569870911956,
+      5.671988010413344
+    ],
+    "P550_TE Fano Errors": [
+      0.4450265416805691,
+      1.0039731831934111,
+      0.17933786601502397,
+      0.002610347505266559,
+      0.7239150281857156
+    ],
+    "P550_TE S4 Fano Fit Parameters": [
+      "Peak",
+      "Gamma",
+      "q",
+      "Amplitude",
+      "Damping"
+    ],
+    "P550_TE S4 Fano Fit": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "P550_TE S4 Fano Errors": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "P550_TE Figure Of Merit": 250000,
+    "P550_TE Fano Error": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "P550_TE Overlap Error": 250000,
+    "P550_TE Differences": 0,
+    "P550_TE Variables": {
+      "S4 Strings": [
+        "material_n",
+        "material_k",
+        "fill_factor",
+        "period",
+        "grating_thickness"
+      ],
+      "S4 Guesses": [
+        2.1,
+        0.02,
+        0.65,
+        560.896164021164,
+        19.400837514444444
+      ]
+    },
+    "P550_TE Constants": {
+      "Reflection": "True",
+      "S4 Strings": [
+        "harmonics",
+        "cover_n",
+        "cover_k",
+        "substrate_n",
+        "substrate_k",
+        "film_thickness",
+        "peak_wavelength",
+        "TE",
+        "TM"
+      ],
+      "S4 Values": [
+        21,
+        1,
+        0,
+        1.4542,
+        0,
+        258.5172118050083,
+        844.1596748954465,
+        1,
+        0
+      ]
+    },
+    "P550_TE Wavelength Range": [
+      772,
+      920,
+      1
+    ]
+  },
+  "P550_TM": {
+    "P550_TM Optimizer Results": [
+      2.1,
+      0.02,
+      0.65,
+      560.896164021164,
+      19.400837504444443
+    ],
+    "P550_TM Optimizer Errors": [
+      0.024999999999999998,
+      0.024999999999999998,
+      0.024999999999999998,
+      0.024999999999999998,
+      0.024999999999999998
+    ],
+    "P550_TM Iterations": 0,
+    "P550_TM FoM Tolerance": 1e-07,
+    "P550_TM Fano Fit Parameters": [
+      "Peak",
+      "Gamma",
+      "q",
+      "Amplitude",
+      "Damping"
+    ],
+    "P550_TM Fano Fit": [
+      835.7701326792363,
+      8.91926605887006,
+      1.4667931195347281,
+      0.060116273087435154,
+      0.5228889544892308
+    ],
+    "P550_TM Fano Errors": [
+      0.54164644512907,
+      1.0942994223248026,
+      0.1430046556212042,
+      0.003923963098243912,
+      0.48952214956642986
+    ],
+    "P550_TM S4 Fano Fit Parameters": [
+      "Peak",
+      "Gamma",
+      "q",
+      "Amplitude",
+      "Damping"
+    ],
+    "P550_TM S4 Fano Fit": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "P550_TM S4 Fano Errors": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "P550_TM Figure Of Merit": 250000,
+    "P550_TM Fano Error": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "P550_TM Overlap Error": 250000,
+    "P550_TM Differences": 0,
+    "P550_TM Variables": {
+      "S4 Strings": [
+        "material_n",
+        "material_k",
+        "fill_factor",
+        "period",
+        "grating_thickness"
+      ],
+      "S4 Guesses": [
+        2.1,
+        0.02,
+        0.65,
+        560.896164021164,
+        19.400837514444444
+      ]
+    },
+    "P550_TM Constants": {
+      "Reflection": "True",
+      "S4 Strings": [
+        "harmonics",
+        "cover_n",
+        "cover_k",
+        "substrate_n",
+        "substrate_k",
+        "film_thickness",
+        "peak_wavelength",
+        "TE",
+        "TM"
+      ],
+      "S4 Values": [
+        21,
+        1,
+        0,
+        1.4542,
+        0,
+        258.5172118050083,
+        835.7487966537843,
+        0,
+        1
+      ]
+    },
+    "P550_TM Wavelength Range": [
+      773,
+      923,
+      1
+    ]
+  },
+  "P625_TE": {
+    "P625_TE Optimizer Results": [
+      4.5,
+      0.02,
+      0.65,
+      653.627114011934,
+      16.026344861825365
+    ],
+    "P625_TE Optimizer Errors": [
+      0.024999999999999998,
+      0.024999999999999998,
+      0.024999999999999998,
+      0.024999999999999998,
+      0.024999999999999998
+    ],
+    "P625_TE Iterations": 1,
+    "P625_TE FoM Tolerance": 1e-07,
+    "P625_TE Fano Fit Parameters": [
+      "Peak",
+      "Gamma",
+      "q",
+      "Amplitude",
+      "Damping"
+    ],
+    "P625_TE Fano Fit": [
+      935.6946696171523,
+      31.17109808822608,
+      1.3310959128517241,
+      0.04339370115542635,
+      2.742658123993974
+    ],
+    "P625_TE Fano Errors": [
+      1.0549948786218326,
+      1.7712727978546632,
+      0.10374378160684211,
+      0.0052991641966352665,
+      0.5408655223642729
+    ],
+    "P625_TE S4 Fano Fit Parameters": [
+      "Peak",
+      "Gamma",
+      "q",
+      "Amplitude",
+      "Damping"
+    ],
+    "P625_TE S4 Fano Fit": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "P625_TE S4 Fano Errors": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "P625_TE Figure Of Merit": 250000,
+    "P625_TE Fano Error": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "P625_TE Overlap Error": 250000,
+    "P625_TE Differences": 0,
+    "P625_TE Variables": {
+      "S4 Strings": [
+        "material_n",
+        "material_k",
+        "fill_factor",
+        "period",
+        "grating_thickness"
+      ],
+      "S4 Guesses": [
+        4.5,
+        0.02,
+        0.65,
+        653.627114011934,
+        16.026344871825366
+      ]
+    },
+    "P625_TE Constants": {
+      "Reflection": "True",
+      "S4 Strings": [
+        "harmonics",
+        "cover_n",
+        "cover_k",
+        "substrate_n",
+        "substrate_k",
+        "film_thickness",
+        "peak_wavelength",
+        "TE",
+        "TM"
+      ],
+      "S4 Values": [
+        21,
+        1,
+        0,
+        1.4542,
+        0,
+        258.5172118050083,
+        935.7207836175231,
+        1,
+        0
+      ]
+    },
+    "P625_TE Wavelength Range": [
+      848,
+      999,
+      1
+    ]
+  },
+  "P625_TM": {
+    "P625_TM Optimizer Results": [
+      2.1,
+      0.02,
+      0.65,
+      653.627114011934,
+      16.026344861825365
+    ],
+    "P625_TM Optimizer Errors": [
+      0.024999999999999998,
+      0.024999999999999998,
+      0.024999999999999998,
+      0.024999999999999998,
+      0.024999999999999998
+    ],
+    "P625_TM Iterations": 0,
+    "P625_TM FoM Tolerance": 1e-07,
+    "P625_TM Fano Fit Parameters": [
+      "Peak",
+      "Gamma",
+      "q",
+      "Amplitude",
+      "Damping"
+    ],
+    "P625_TM Fano Fit": [
+      929.2896946711414,
+      42.61098519667553,
+      1.0438210986309966,
+      0.06057910507947033,
+      1.4182071404327428
+    ],
+    "P625_TM Fano Errors": [
+      3.193702612121478,
+      4.134013326670915,
+      0.16342475304870055,
+      0.015662277852443455,
+      0.618174025685845
+    ],
+    "P625_TM S4 Fano Fit Parameters": [
+      "Peak",
+      "Gamma",
+      "q",
+      "Amplitude",
+      "Damping"
+    ],
+    "P625_TM S4 Fano Fit": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "P625_TM S4 Fano Errors": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "P625_TM Figure Of Merit": 250000,
+    "P625_TM Fano Error": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "P625_TM Overlap Error": 250000,
+    "P625_TM Differences": 0,
+    "P625_TM Variables": {
+      "S4 Strings": [
+        "material_n",
+        "material_k",
+        "fill_factor",
+        "period",
+        "grating_thickness"
+      ],
+      "S4 Guesses": [
+        2.1,
+        0.02,
+        0.65,
+        653.627114011934,
+        16.026344871825366
+      ]
+    },
+    "P625_TM Constants": {
+      "Reflection": "True",
+      "S4 Strings": [
+        "harmonics",
+        "cover_n",
+        "cover_k",
+        "substrate_n",
+        "substrate_k",
+        "film_thickness",
+        "peak_wavelength",
+        "TE",
+        "TM"
+      ],
+      "S4 Values": [
+        21,
+        1,
+        0,
+        1.4542,
+        0,
+        258.5172118050083,
+        930.388041493462,
+        0,
+        1
+      ]
+    },
+    "P625_TM Wavelength Range": [
+      858,
+      987,
+      1
+    ]
+  }
+}

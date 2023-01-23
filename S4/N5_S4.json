@@ -1,0 +1,60 @@
+{
+  "File Paths": [
+    "/media/mass_storage/josh/Documents/Grating Optimizer/S4/N5_Film.json",
+    "/media/mass_storage/josh/Documents/Grating Optimizer/S4/N5_Grating.json",
+    "/media/mass_storage/josh/Documents/Grating Optimizer/S4/N5_Peak.json",
+    "/media/mass_storage/josh/Documents/Grating Optimizer/S4/N5_Period.json"
+  ],
+  "Gratings": [
+    "P390_TE",
+    "P390_TM",
+    "P405_TE",
+    "P405_TM",
+    "P440_TE",
+    "P440_TM",
+    "P475_TE",
+    "P475_TM"
+  ],
+  "P390_TE": {
+    "P390_TE Missing Parameters": [
+      "period"
+    ]
+  },
+  "P390_TM": {
+    "P390_TM Missing Parameters": [
+      "period"
+    ]
+  },
+  "P405_TE": {
+    "P405_TE Missing Parameters": [
+      "period",
+      "grating_thickness"
+    ]
+  },
+  "P405_TM": {
+    "P405_TM Missing Parameters": [
+      "period",
+      "grating_thickness"
+    ]
+  },
+  "P440_TE": {
+    "P440_TE Missing Parameters": [
+      "grating_thickness"
+    ]
+  },
+  "P440_TM": {
+    "P440_TM Missing Parameters": [
+      "grating_thickness"
+    ]
+  },
+  "P475_TE": {
+    "P475_TE Missing Parameters": [
+      "grating_thickness"
+    ]
+  },
+  "P475_TM": {
+    "P475_TM Missing Parameters": [
+      "grating_thickness"
+    ]
+  }
+}

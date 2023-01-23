@@ -82,7 +82,8 @@ def uncertainty_region_plot(frequencies,
                             permittivity_range,
                             label,
                             frequency_ticks,
-                            out_path):
+                            out_path,
+                            show=False):
     '''
     Plot optically measured permittivities as a function of resonant frequency,
     on to the same style of plot as is common in Drude/ENZ literature. Errors
@@ -99,6 +100,7 @@ def uncertainty_region_plot(frequencies,
         label: <string> legend label for data
         frequency_ticks: <array> array of frequency space axis ticks
         out_path: <string> path to save
+        show: <bool> if True, plot shows, always plots
     Returns:
         None
     '''
@@ -152,6 +154,8 @@ def uncertainty_region_plot(frequencies,
         'Epsilon [au]',
         fontsize=14,
         fontweight='bold')
+    if show:
+        plt.show()
     plt.savefig(out_path)
     fig.clf()
     plt.cla()
@@ -168,7 +172,8 @@ def literature_plot_with_errors(drude_permittivities,
                                 permittivity_range,
                                 point_label,
                                 frequency_ticks,
-                                out_path):
+                                out_path,
+                                show=False):
     '''
     '''
     fig, ax1 = plt.subplots(
@@ -253,6 +258,122 @@ def literature_plot_with_errors(drude_permittivities,
         'Epsilon [au]',
         fontsize=14,
         fontweight='bold')
+    if show:
+        plt.show()
+    plt.savefig(out_path)
+    fig.clf()
+    plt.cla()
+    plt.close(fig)
+
+
+def drude_permittivity_plot(frequency_THz,
+                            drude_permittivity,
+                            drude_label,
+                            frequency_ticks,
+                            frequency_points,
+                            frequency_errors,
+                            permittivity_points,
+                            permittivity_errors,
+                            out_path,
+                            show=False):
+    '''
+    Args:
+        frequency_THz: <array> frequency range in THz
+        drude_permittivity: <array> drude permittivity
+        drude_label: <string> drude permittivity label
+        frequency_ticks: <array> array of frequency tick labels (THz)
+        frequency_points: <array> array of frequency values for data points
+        frequency_errors: <array> array of frequency error values for data
+                            points
+        permittivity_points: <array> array of permittivity values for data
+                            points
+        permittivity_errors: <array> array of permittivity error values for data
+                            points
+        out_path: <string> path to save
+        show: <bool> if True, plot shows, always saves
+    '''
+    fig, ax1 = plt.subplots(
+        nrows=1,
+        ncols=1,
+        figsize=[10, 7])
+    ax2 = ax1.twiny()
+
+    ''' Plot Permittivity and frequency '''
+    ax1.plot(
+        frequency_THz[::-1],
+        drude_permittivity,
+        color='b',
+        lw=2,
+        label=drude_label)
+    ax1.axhline(
+        y=0,
+        color='g',
+        lw=2,
+        linestyle='--')
+    ax1.legend(
+        loc=0,
+        prop={'size': 14})
+    ax1.set_ylim(-10, 6)
+
+    ''' Plot Permittivity and Frequency Errors '''
+    #ax1.plot(
+    #    frequency_THz[::-1],
+    #    [
+    #        permittivity + error
+    #        for permittivity, error in
+    #        zip(drude_permittivity, drude_errors_upper)]
+    #    color='b',
+    #    lw=2,
+    #    linestyle='--',
+    #    alpha=0.2)
+    #ax1.plot(
+    #    frequency_THz[::-1],
+    #    [
+    #        permittivity - error
+    #        for permittivity, error in
+    #        zip(drude_permittivity, drude_errors_lower)]
+    #    color='b',
+    #    lw=2,
+    #    linestyle='--',
+    #    alpha=0.2)
+
+    ''' Plot Resonant Points With Errors '''
+    ax1.errorbar(
+        x=frequency_points[::-1],
+        y=permittivity_points,
+        yerr=permittivity_errors,
+        xerr=frequency_errors,
+        mfc='r',
+        ecolor='r',
+        marker='x',
+        ms=8)
+
+    ''' Set Up Wavelength/Frequency Ticks '''
+    ax2.set_xticks(frequency_ticks)
+    ax2Ticks = ax2.get_xticks()
+    ax2.set_xticklabels(frequency_ticks[::-1])
+    ax1Ticks = ax2Ticks
+    ax1.set_xticks(ax1Ticks)
+    ax1.set_xbound(ax2.get_xbound())
+    ax1.set_xticklabels(tick_function(X=ax1Ticks[::-1]))
+
+    ''' Set Axes Labels '''
+    ax2.set_xlabel(
+        'Frequency [THz]',
+        fontsize=14,
+        fontweight='bold')
+    ax1.set_xlabel(
+        'Wavelength[μm]',
+        fontsize=14,
+        fontweight='bold')
+    ax1.set_ylabel(
+        'Epsilon [au]',
+        fontsize=14,
+        fontweight='bold')
+
+    ''' Save Out '''
+    if show:
+        plt.show()
     plt.savefig(out_path)
     fig.clf()
     plt.cla()
