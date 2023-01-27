@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Ignore Data and Results
+S4/
+Results/
+References/
+4PP/

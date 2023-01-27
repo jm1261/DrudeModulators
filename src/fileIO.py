@@ -1,4 +1,5 @@
 import json
+import math
 import numpy as np
 
 
@@ -58,6 +59,141 @@ def load_sheet_resistance(file_path):
     return sheet_resistances
 
 
+def get_refractiveindex(grating_name,
+                        grating_dictionary):
+    '''
+    Pull refractive index and refractive index error from grating dictionary in
+    S4 output file.
+    Args:
+        grating_name: <string> grating identifier key
+        grating_dictionary: <dict> grating dictionary from S4 output
+    Returns:
+        TE_RIU: <float> refractive index for TE mode
+        RIU_error: <float> refractive index error
+    '''
+    TE_variables = grating_dictionary[f'{grating_name}_TE Variables']
+    TE_strings = TE_variables['S4 Strings']
+    TE_results = TE_variables['S4 Guesses']
+    TE_index = [
+        index
+        for index, name
+        in enumerate(TE_strings) if name == 'material_n'][0]
+    TE_RIU = TE_results[TE_index]
+    #TE_opt_errors = grating_dictionary[f'{grating_name}_TE Optimizer Errors']
+    #TM_opt_errors = grating_dictionary[f'{grating_name}_TM Optimizer Errors']
+    #RIU_error = math.sqrt(
+    #    (TE_opt_errors[TE_index]) ** 2
+    #    + (TM_opt_errors[TE_index]) ** 2)
+    TM_variables = grating_dictionary[f'{grating_name}_TM Variables']
+    TM_strings = TM_variables['S4 Strings']
+    TM_results = TM_variables['S4 Guesses']
+    TM_index = [
+        index
+        for index, name
+        in enumerate(TM_strings) if name == 'material_n'][0]
+    TM_RIU = TM_results[TM_index]
+    RIU_error = math.sqrt(np.abs(TE_RIU - TM_RIU)) / 2
+    return TE_RIU, RIU_error
+
+
+def get_extinction_coef(grating_name,
+                        grating_dictionary):
+    '''
+    Pull extinction coefficient and refractive index error from grating
+    dictionary in S4 output file.
+    Args:
+        grating_name: <string> grating identifier key
+        grating_dictionary: <dict> grating dictionary from S4 output
+    Returns:
+        TE_k: <float> extinction coefficient for TE mode
+        k_error: <float> extinction coefficient error
+    '''
+    TE_variables = grating_dictionary[f'{grating_name}_TE Variables']
+    TE_strings = TE_variables['S4 Strings']
+    TE_results = TE_variables['S4 Guesses']
+    TE_index = [
+        index
+        for index, name
+        in enumerate(TE_strings) if name == 'material_k'][0]
+    TE_k = TE_results[TE_index]
+    optimizer_errors = grating_dictionary[f'{grating_name}_TE Optimizer Errors']
+    k_error = optimizer_errors[TE_index]
+    return TE_k * 10, k_error
+
+
+def get_peak_wavelength(grating_name,
+                        grating_dictionary):
+    '''
+    Pull extinction coefficient and refractive index error from grating
+    dictionary in S4 output file.
+    Args:
+        grating_name: <string> grating identifier key
+        grating_dictionary: <dict> grating dictionary from S4 output
+    Returns:
+        peak_wavelength: <float> resonant wavelength in nm
+        peak_error: <float> resonant wavelength error in nm
+    '''
+    TE_names = grating_dictionary[f'{grating_name}_TE Fano Fit Parameters']
+    TE_values = grating_dictionary[f'{grating_name}_TE Fano Fit']
+    TE_errors = grating_dictionary[f'{grating_name}_TE Fano Errors']
+    TE_index = [
+        index
+        for index, name
+        in enumerate(TE_names) if name == 'Peak'][0]
+    peak_wavelength = TE_values[TE_index]
+    peak_error = TE_errors[TE_index]
+    return peak_wavelength, peak_error
+
+
+def get_films_thickness(grating_name,
+                        grating_dictionary):
+    '''
+    Pull film thickness and film thickness error from grating dictionary in
+    S4 output file.
+    Args:
+        grating_name: <string> grating identifier key
+        grating_dictionary: <dict> grating dictionary from S4 output
+    Returns:
+        film_thickness: <float> film thickness for TE mode
+        film_error: <float> film thickness error
+    '''
+    TE_variables = grating_dictionary[f'{grating_name}_TE Variables']
+    TE_strings = TE_variables['S4 Strings']
+    TE_results = TE_variables['S4 Guesses']
+    TE_index = [
+        index
+        for index, name
+        in enumerate(TE_strings) if name == 'film_thickness'][0]
+    TE_film_thickness = TE_results[TE_index]
+    TM_variables = grating_dictionary[f'{grating_name}_TM Variables']
+    TM_strings = TM_variables['S4 Strings']
+    TM_results = TM_variables['S4 Guesses']
+    TM_index = [
+        index
+        for index, name
+        in enumerate(TM_strings) if name == 'film_thickness'][0]
+    TM_film_thickness = TM_results[TM_index]
+    film_thickness = (TE_film_thickness + TM_film_thickness) / 2
+    film_error = np.abs(film_thickness - TM_film_thickness)
+    return film_thickness, film_error
+
+
+def get_fom(grating_name,
+            grating_dictionary):
+    '''
+    Pull figure of merit from grating dictionary in S4 output file.
+    Args:
+        grating_name: <string> grating identifier key
+        grating_dictionary: <dict> grating dictionary from S4 output
+    Returns:
+        fom: <float> figure of merit for grating
+    '''
+    TE_fom = grating_dictionary[f'{grating_name}_TE Figure Of Merit']
+    TM_fom = grating_dictionary[f'{grating_name}_TM Figure Of Merit']
+    fom = TE_fom + TM_fom
+    return fom
+
+
 def get_S4_measurements(file_path):
     '''
     Pull required measured parameters from S4 output file and store in batch/
@@ -79,57 +215,37 @@ def get_S4_measurements(file_path):
         'Peak Wavelength Error': [],
         'Film Thickness': [],
         'Film Thickness Error': [],
-        'Figure Of Merit': [],
-        'Bad Gratings': []}
+        'Figure Of Merit': []}
     for grating in gratings:
         grating_dict = S4_measurements[f'{grating}']
         if f'{grating} Missing Parameters' in grating_dict.keys():
             pass
         else:
-            fano_names = grating_dict[f'{grating} S4 Fano Fit Parameters']
-            fano_values = grating_dict[f'{grating} S4 Fano Fit']
-            fano_errors = grating_dict[f'{grating} S4 Fano Errors']
-            variables = (grating_dict[f'{grating} Variables'])['S4 Strings']
-            variable_values = grating_dict[f'{grating} Optimizer Results']
-            variable_errors = grating_dict[f'{grating} Optimizer Errors']
-            constants = (grating_dict[f'{grating} Constants'])['S4 Strings']
-            constant_values = (
-                grating_dict[f'{grating} Constants'])['S4 Values']
-            if grating_dict[f'{grating} Figure Of Merit'] > 50:
-                batch_dictionary['Bad Gratings'].append(f'{grating}')
-            else:
-                batch_dictionary['Figure Of Merit'].append(
-                    grating_dict[f'{grating} Figure Of Merit'])
-                for index, name in enumerate(fano_names):
-                    if name == 'Peak':
-                        batch_dictionary['Peak Wavelength'].append(
-                            fano_values[index])
-                        batch_dictionary['Peak Wavelength Error'].append(
-                            fano_errors[index])
-                for index, name in enumerate(variables):
-                    if name == 'material_n':
-                        batch_dictionary['Refractive Index'].append(
-                            variable_values[index])
-                        batch_dictionary['Refractive Index Error'].append(
-                            variable_errors[index])
-                    if name == 'material_k':
-                        batch_dictionary['Extinction Coefficient'].append(
-                            variable_values[index])
-                        batch_dictionary['Extinction Coefficient Error'].append(
-                            variable_errors[index])
-                    ''' This will need changing soon '''
-                    if name == 'grating_thickness':
-                        batch_dictionary['Film Thickness Error'].append(
-                            variable_errors[index])
-                for index, name in enumerate(constants):
-                    if name == 'film_thickness':
-                        batch_dictionary['Film Thickness'].append(
-                            constant_values[index])
+            index, index_error = get_refractiveindex(
+                grating_name=f'{grating}',
+                grating_dictionary=grating_dict)
+            extinction, extinction_error = get_extinction_coef(
+                grating_name=f'{grating}',
+                grating_dictionary=grating_dict)
+            peak, peak_error = get_peak_wavelength(
+                grating_name=f'{grating}',
+                grating_dictionary=grating_dict)
+            film_thickness, film_error = get_films_thickness(
+                grating_name=f'{grating}',
+                grating_dictionary=grating_dict)
+            fom = get_fom(
+                grating_name=f'{grating}',
+                grating_dictionary=grating_dict)
+            batch_dictionary['Refractive Index'].append(index)
+            batch_dictionary['Refractive Index Error'].append(index_error)
+            batch_dictionary['Extinction Coefficient'].append(extinction)
+            batch_dictionary['Extinction Coefficient Error'].append(
+                extinction_error)
+            batch_dictionary['Peak Wavelength'].append(peak)
+            batch_dictionary['Peak Wavelength Error'].append(peak_error)
+            batch_dictionary['Film Thickness'].append(film_thickness)
+            batch_dictionary['Film Thickness Error'].append(film_error)
+            batch_dictionary['Figure Of Merit'].append(fom)
     if len(batch_dictionary['Peak Wavelength']) == 0:
         batch_dictionary = {'Skip': True}
     return batch_dictionary
-
-
-def get_mobilities():
-    '''
-    '''
