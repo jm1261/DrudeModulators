@@ -1,8 +1,6 @@
 import matplotlib.pyplot as plt
 from matplotlib.ticker import MultipleLocator, AutoMinorLocator
 
-plt.rcParams['figure.dpi'] = 300
-plt.rcParams['savefig.dpi'] = 300
 
 def tick_function(X):
     '''
@@ -14,6 +12,17 @@ def tick_function(X):
     '''
     V = (3E8 / (X * 1E12)) * 1E6
     return ['%.2f' % z for z in V]
+
+
+def cm_to_inches(cm):
+    '''
+    Convert cm to inches.
+    Args:
+        cm: <float> distance in cm
+    Returns:
+        inches: <float> distance in inches to 2dp
+    '''
+    return round(cm * 0.393701, 2)
 
 
 def literature_plot(drude_permittivity,
@@ -34,10 +43,16 @@ def literature_plot(drude_permittivity,
     Returns:
         None
     '''
+    page_width = 7.5
+    figure_height = 9
+    figure_width = page_width / 2
     fig, ax1 = plt.subplots(
         nrows=1,
         ncols=1,
-        figsize=[10, 7])
+        figsize=[
+            cm_to_inches(cm=figure_width),
+            cm_to_inches(cm=figure_height)],
+        dpi=600)
     ax2 = ax1.twiny()
     ax1.plot(
         frequency_range[::-1],
@@ -51,7 +66,7 @@ def literature_plot(drude_permittivity,
         linestyle='--')
     ax1.legend(
         loc=0,
-        prop={'size': 14})
+        prop={'size': 10})
     ax1.set_ylim(-10, 6)
     ax2.set_xticks(frequency_ticks)
     ax2Ticks = ax2.get_xticks()
@@ -62,15 +77,15 @@ def literature_plot(drude_permittivity,
     ax1.set_xticklabels(tick_function(X=ax1Ticks[::-1]))
     ax2.set_xlabel(
         'Frequency [THz]',
-        fontsize=14,
+        fontsize=15,
         fontweight='bold')
     ax1.set_xlabel(
         'Wavelength[μm]',
-        fontsize=14,
+        fontsize=15,
         fontweight='bold')
     ax1.set_ylabel(
         'Epsilon [au]',
-        fontsize=14,
+        fontsize=15,
         fontweight='bold')
     plt.savefig(out_path)
     fig.clf()
@@ -92,11 +107,19 @@ def drude_permittivity_plot(frequency_THz,
                             imag_permittivity_points,
                             imag_permittivity_errors,
                             frequency_ticks,
+                            legend_loc,
                             out_path):
+    page_width = 15
+    page_height = 9
+    figure_height = page_height
+    figure_width = page_width / 2
     fig, ax1 = plt.subplots(
         nrows=1,
         ncols=1,
-        figsize=[10, 7])
+        figsize=[
+            10,
+            7],
+        dpi=300)
     ax3 = ax1.twiny()
     
     ''' Plot Real Permittivity and Frequency '''
@@ -109,10 +132,10 @@ def drude_permittivity_plot(frequency_THz,
     ax1.axhline(
         y=0,
         color='black',
-        lw=2,
+        lw=4,
         linestyle='--',
         alpha=0.5)
-    ax1.set_ylim(-3.9, 5.9)
+    ax1.set_ylim(-1.9, 5.9)
 
     ''' Plot Imaginary Permittivity and Frequency '''
     ax2 = ax1.twinx()
@@ -122,7 +145,7 @@ def drude_permittivity_plot(frequency_THz,
         color=imag_color,
         lw=4,
         label=imaginary_label)
-    ax2.set_ylim(-0.39, 0.59)
+    ax2.set_ylim(-0.19, 0.59)
 
     ''' Get Lines and Labels '''
     lines = line1 + line2
@@ -131,8 +154,8 @@ def drude_permittivity_plot(frequency_THz,
         lines,
         labels,
         frameon=True,
-        loc='lower left',
-        ncol=1,
+        loc=legend_loc,
+        ncol=2,
         prop={'size': 22})
 
     ''' Plot Real Resonant Points with Errors '''
@@ -161,6 +184,7 @@ def drude_permittivity_plot(frequency_THz,
 
     ''' Set Up Wavelength Range '''
     ax3.set_xticks(frequency_ticks)
+    ax3.set_xlim(90, 600)
     ax3Ticks = ax3.get_xticks()
     ax3.set_xticklabels(frequency_ticks)
     ax1Ticks = ax3Ticks
@@ -195,9 +219,9 @@ def drude_permittivity_plot(frequency_THz,
     ax1.tick_params(axis='y', which='major', labelsize=28)
     ax2.tick_params(axis='y', which='major', labelsize=28)
     ax3.tick_params(axis='x', which='major', labelsize=28)
-    ax1.yaxis.set_major_locator(MultipleLocator(2))
+    ax1.yaxis.set_major_locator(MultipleLocator(1.5))
     ax1.yaxis.set_minor_locator(AutoMinorLocator())
-    ax2.yaxis.set_major_locator(MultipleLocator(0.2))
+    ax2.yaxis.set_major_locator(MultipleLocator(0.15))
     ax2.yaxis.set_minor_locator(AutoMinorLocator())
     ax1.xaxis.set_minor_locator(AutoMinorLocator())
     ax3.xaxis.set_minor_locator(AutoMinorLocator())

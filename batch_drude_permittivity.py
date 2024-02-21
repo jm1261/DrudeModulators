@@ -37,9 +37,15 @@ if __name__ == '__main__':
         '$\epsilon_i$ 20% $O_2$',
         '$\epsilon_i$ 27% $O_2$',
         '$\epsilon_i$ 5% $O_2$']
+    legend_loc = [
+        'lower left',
+        'lower left',
+        'lower left',
+        'lower left'
+    ]
     for index, batch in enumerate(batches):
         file_paths = batches[f'{batch}']
-        out_file = Path(f'{directory_paths["Results Path"]}/{batch}_Drude.json')
+        out_file = Path(f'{directory_paths["Results Path"]}/{batch}_Final_Drude.json')
         oot_file = Path(f'{directory_paths["Results Path"]}/{batch}_Drude.json')
         if oot_file.is_file():
             pass
@@ -181,6 +187,7 @@ if __name__ == '__main__':
                             'Imaginary Permittivity Error'],
                         frequency_ticks=drude_parameters[
                             'Frequency THz Ticks'],
+                        legend_loc=legend_loc[index],
                         out_path=Path(
                             f'{directory_paths["Results Path"]}'
                             f'\{batch}_Drude.png'))
